@@ -2,6 +2,7 @@ package modelo;
 
 import java.sql.Statement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -48,7 +49,21 @@ public class UserDAO implements IUserDAO {
 	@Override
 	public boolean addUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
-		return false;
+		int resultado = 0;
+		String sql = "INSERT INTO user VALUES (?,?,?,?);";
+		try {
+			PreparedStatement pStatement = conexion.prepareStatement(sql);
+			pStatement.setString(1, usuario.getLogin());
+			pStatement.setString(2, usuario.getPassword());
+			pStatement.setString(3, usuario.getCode());
+			pStatement.setString(4, usuario.getGender());
+			resultado = pStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println("Error en la inserccion del usuario");
+		}
+		
+		return resultado != 0;
 	}
 
 	@Override

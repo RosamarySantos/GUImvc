@@ -30,8 +30,18 @@ public class Vista extends JFrame {
 	private JButton buttonRetroceso1;
 	private JButton buttonAvance25;
 	private JButton buttonRetroceso25;
+	private JButton btnGuardar;
+	private JButton btnInsertar;
 
 	
+	public JButton getBtnGuardar() {
+		return btnGuardar;
+	}
+
+	public JButton getBtnInsertar() {
+		return btnInsertar;
+	}
+
 	public JTextField getTextFieldLogin() {
 		return textFieldLogin;
 	}
@@ -127,6 +137,11 @@ public class Vista extends JFrame {
 		buttonRetroceso1 = new JButton("<");
 		
 		buttonRetroceso25 = new JButton("<<");
+		
+		btnInsertar = new JButton("Insertar");
+		
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.setEnabled(false);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -159,7 +174,11 @@ public class Vista extends JFrame {
 							.addComponent(buttonRetroceso25)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(buttonRetroceso1)))
-					.addContainerGap(117, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnInsertar)
+						.addComponent(btnGuardar))
+					.addContainerGap(41, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -167,18 +186,21 @@ public class Vista extends JFrame {
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblLogin)
-						.addComponent(textFieldLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnInsertar))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblPassword)
-						.addComponent(textFieldPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(textFieldPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnGuardar)))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(22)
 							.addComponent(lblCode))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(18)
-							.addComponent(textFieldCode)))
+							.addComponent(textFieldCode, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGap(32)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(lblGender)

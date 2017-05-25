@@ -1,6 +1,6 @@
 package modelo;
 
-public class Usuario {
+public class Usuario implements Comparable<Usuario> {
 	
 	private String login;
 	private String password;
@@ -50,6 +50,14 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [login=" + login + ", password=" + password + ", code=" + code + ", gender=" + gender + "]";
 	}
+
+	@Override
+	public int compareTo(Usuario o) {
+		// TODO Auto-generated method stub
+		return login.compareTo(o.login);
+	}
+
+	
 	
 	
 }
